@@ -1,19 +1,22 @@
 {
-  "name": "semanticweb",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/adanfernandez/SemanticWeb.git"
-  },
-  "author": "Adán Fernández Sánchez",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/adanfernandez/SemanticWeb/issues"
-  },
-  "homepage": "https://github.com/adanfernandez/SemanticWeb#readme"
+    "name": "semanticweb",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/adanfernandez/SemanticWeb.git"
+    },
+    "author": "Adán Fernández Sánchez",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/adanfernandez/SemanticWeb/issues"
+    },
+    "homepage": "https://github.com/adanfernandez/SemanticWeb#readme",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
 }
