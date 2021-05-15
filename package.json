@@ -18,6 +18,8 @@
     "homepage": "https://github.com/adanfernandez/SemanticWeb#readme",
     "dependencies": {
         "express": "^4.17.1",
-        "mysql": "github:mysqljs/mysql"
+        "mysql": "github:mysqljs/mysql",
+        "superagent": "^5.1.0",
+        "node-fetch": "^2.6.0"
     }
 }
