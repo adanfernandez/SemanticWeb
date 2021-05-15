@@ -4,5 +4,6 @@ const dict = {}
 
 
 exports.getChiefs = function(funcionCallback) {
-    return getChiefs();
+    const url = wikidataUrl + '?query=' + encodeURIComponent(getChiefs());
+    return url;
 }
