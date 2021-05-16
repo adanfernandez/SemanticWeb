@@ -29,11 +29,13 @@ function getCoaches() {
 };
 
 function getStadiums() {
-    return `SELECT ?stadium ?stadiumLabel
+    return `SELECT ?stadium ?stadiumLabel ?dateStart ?dateEnd
 	WHERE {
 	  OPTIONAL { wd:Q15789 p:P115 ?venue } .
       ?venue ps:P115 ?stadium .
+      OPTIONAL { ?venue pq:P580 ?dateStart }.
+      OPTIONAL { ?venue pq:P582 ?dateEnd }.   
 	  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en,nl".}
 	}
-	ORDER BY ASC(xsd:integer(?stadium) )`;
+	ORDER BY ASC(?dateStart)`;
 }
