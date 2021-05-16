@@ -1,5 +1,7 @@
 exports.getChiefs = getChiefs;
 exports.getCoaches = getCoaches;
+exports.getStadiums = getStadiums;
+
 
 function getChiefs() {
     return `SELECT ?clubLabel  ?presidentLabel
@@ -13,12 +15,23 @@ function getChiefs() {
 
 
 function getCoaches() {
-    return `SELECT ?clubLabel ?coachLabel
+    return `SELECT ?coach ?coachLabel ?dateStart ?dateEnd
 	WHERE {
-	  ?club wdt:P31 wd:Q847017 .
-	  ?club wdt:P361 wd:Q1386924 .
-	  OPTIONAL { ?club wdt:P286 ?coach } .
+	  OPTIONAL { wd:Q15789 p:P286 ?trainer } .
+      ?trainer ps:P286 ?coach .
+      ?trainer pq:P580 ?dateStart .
+      ?trainer pq:P582 ?dateEnd .   
 	  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en,nl".}
 	}
-	ORDER BY ASC(xsd:integer(?coach) )`;
+	ORDER BY ASC(?dateStart)`;
 };
+
+function getStadiums() {
+    return `SELECT ?stadium ?stadiumLabel
+	WHERE {
+	  OPTIONAL { wd:Q15789 p:P115 ?venue } .
+      ?venue ps:P115 ?stadium .
+	  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en,nl".}
+	}
+	ORDER BY ASC(xsd:integer(?stadium) )`;
+}

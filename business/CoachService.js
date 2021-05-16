@@ -1,5 +1,5 @@
 module.exports = {
     coachSerializerFromWikidata: function(data, functionCallback) {
-        console.log(data);
+        functionCallback(data);
     }
 }
