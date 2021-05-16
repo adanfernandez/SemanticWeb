@@ -1,17 +1,16 @@
+// Queries
 const { getCoaches } = require('./sparql');
 const { getChiefs } = require('./sparql');
 const { getStadiums } = require('./sparql');
 
-
-
+// Serializers
 const { coachSerializerFromWikidata } = require('../CoachService');
 const { stadiumSerializerFromWikidata } = require('../StadiumService');
+
+// Request
 const wikidataUrl = 'https://query.wikidata.org/sparql';
 const headers = { 'Accept': 'application/sparql-results+json' };
 const fetch = require('node-fetch');
-
-const dict = {}
-
 
 exports.getCoaches = function(functionCallback) {
     var url = wikidataUrl + '?query=' + encodeURIComponent(getCoaches());
