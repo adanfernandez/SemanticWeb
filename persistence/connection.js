@@ -2,9 +2,9 @@ const mysql = require('mysql');
 
 module.exports = () => {
     return mysql.createConnection({
-        host: 'semanticWeb',
+        host: 'localhost',
         user: 'root',
-        database: 'root',
+        database: 'semanticWeb',
         connectTimeout: 30000
     });
 };
