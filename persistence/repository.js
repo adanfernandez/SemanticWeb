@@ -37,6 +37,38 @@ module.exports = {
     },
 
     /**
+     * Add stadium to database
+     * @param {*} stadium 
+     * @param {*} functionCallback 
+     */
+    addStadium: function(stadium, functionCallback) {
+        var query = 'INSERT INTO `tstadium`(`name`, `initial_date`, `final_date`)' + ` VALUES ('${stadium.name}','${stadium.dateStart}','${stadium.dateEnd}')`;
+        this.connection.query(query, (err, result) => {
+            if (err) {
+                functionCallback(null);
+            } else {
+                functionCallback(result);
+            }
+        });
+    },
+
+    /**
+     * Add stadium to database
+     * @param {*} chief 
+     * @param {*} functionCallback 
+     */
+    addChief: function(chief, functionCallback) {
+        var query = 'INSERT INTO `tchiefs`(`name`, `initial_date`, `final_date`)' + ` VALUES ('${chief.name}','${chief.dateStart}','${chief.dateEnd}')`;
+        this.connection.query(query, (err, result) => {
+            if (err) {
+                functionCallback(null);
+            } else {
+                functionCallback(result);
+            }
+        });
+    },
+
+    /**
      * Get coaches obtained from wikidata with their titles 
      * @param {*} functionCallback 
      */
@@ -51,4 +83,14 @@ module.exports = {
         });
     },
 
+    truncateTable: function(table, functionCallback) {
+        var query = `TRUNCATE ${table}`;
+        this.connection.query(query, (err, result) => {
+            if (err) {
+                functionCallback(null);
+            } else {
+                functionCallback(result);
+            }
+        });
+    },
 };

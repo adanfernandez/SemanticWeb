@@ -1,9 +1,9 @@
 const Serializable = require('./wikidata/model/object-serializer');
 
 module.exports = {
-    stadiumSerializerFromWikidata: function(repository, data, functionCallback) {
+    chiefSerializerFromWikidata: function(repository, data, functionCallback) {
         data.results.bindings.forEach(element => {
-            var name = element.stadiumLabel.value;
+            var name = element.chiefLabel.value;
             var dateStart = null;
             var dateEnd = null;
             if (element.dateStart) {
@@ -13,7 +13,7 @@ module.exports = {
                 var dateEnd = element.dateEnd.value;
             }
             var object = new Serializable(name, dateStart, dateEnd);
-            repository.addStadium(object, functionCallback);
+            repository.addChief(object, functionCallback);
         });
     }
 }
