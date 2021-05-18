@@ -8,9 +8,9 @@ CREATE TABLE `semanticweb`.`tstadium` ( `id` INT NOT NULL AUTO_INCREMENT , `name
 CREATE TABLE `semanticweb`.`tchiefs` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `initial_date` DATE , `final_date` DATE , `semantic` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 CREATE TABLE `semanticweb`.`ttitle` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `semantic` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 CREATE TABLE `semanticweb`.`thistorictitle` ( `id` INT NOT NULL AUTO_INCREMENT, `date` DATE NOT NULL,`id_title` INT NOT NULL , PRIMARY KEY (`id`), CONSTRAINT FK_COACHTITLE_TITLE FOREIGN KEY (id_title) REFERENCES ttitle(id) ) ENGINE = InnoDB;
-INSERT INTO `semanticweb`.`ttitle`(`name`, `semantic`) VALUES ('European Cup', 'https://www.wikidata.org/wiki/Q18756');
-INSERT INTO `semanticweb`.`ttitle`(`name`, `semantic`) VALUES ('Bundesliga', 'https://www.wikidata.org/wiki/Q82595');
-INSERT INTO `semanticweb`.`ttitle`(`name`, `semantic`) VALUES ('DFB Pokal', 'https://www.wikidata.org/wiki/Q150880');
+INSERT INTO `semanticweb`.`ttitle`(`name`, `semantic`) VALUES ('European Cup', 'https://www.uefa.com/uefachampionsleague');
+INSERT INTO `semanticweb`.`ttitle`(`name`, `semantic`) VALUES ('Bundesliga', 'https://www.bundesliga.com/en/bundesliga');
+INSERT INTO `semanticweb`.`ttitle`(`name`, `semantic`) VALUES ('DFB Pokal', 'https://www.dfb.de/en/dfb-pokal/mens-dfb-pokal/');
 INSERT INTO `semanticweb`.`thistorictitle`(`id_title`, `date`) VALUES (1, '1974-05-17');
 INSERT INTO `semanticweb`.`thistorictitle`(`id_title`, `date`) VALUES (1, '1975-05-28');
 INSERT INTO `semanticweb`.`thistorictitle`(`id_title`, `date`) VALUES (1, '1976-05-12');
