@@ -13,7 +13,7 @@ module.exports = {
 
 
             if (element.dateStart) {
-                var dateEnd = element.dateStart.value;
+                var dateStart = element.dateStart.value;
             }
 
             if (element.dateEnd) {
