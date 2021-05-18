@@ -16,9 +16,6 @@ const fetch = require('node-fetch');
 
 exports.getCoaches = function(repository, functionCallback) {
     var url = wikidataUrl + '?query=' + encodeURIComponent(getCoaches());
-
-    console.log("URL: " + url);
-
     fetch(url, { headers }).then(body => {
         body.json().then(data => {
             coachSerializerFromWikidata(repository, data, functionCallback);
@@ -28,9 +25,6 @@ exports.getCoaches = function(repository, functionCallback) {
 
 exports.getStadiums = function(repository, functionCallback) {
     var url = wikidataUrl + '?query=' + encodeURIComponent(getStadiums());
-
-    console.log("URL: " + url);
-
     fetch(url, { headers }).then(body => {
         body.json().then(data => {
             stadiumSerializerFromWikidata(repository, data, functionCallback);
@@ -41,7 +35,6 @@ exports.getStadiums = function(repository, functionCallback) {
 
 exports.getChiefs = function(repository, functionCallback) {
     var url = wikidataUrl + '?query=' + encodeURIComponent(getChiefs());
-    console.log("URL: " + url);
     fetch(url, { headers }).then(body => {
         body.json().then(data => {
             chiefSerializerFromWikidata(repository, data, functionCallback);

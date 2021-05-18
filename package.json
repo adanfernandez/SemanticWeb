@@ -21,6 +21,7 @@
         "express": "^4.17.1",
         "mysql": "github:mysqljs/mysql",
         "node-fetch": "^2.6.0",
-        "nodemon": "^2.0.7"
+        "nodemon": "^2.0.7",
+        "rdf": "^4.1.0"
     }
 }
