@@ -1,4 +1,4 @@
-const Serializable = require('./wikidata/model/object-serializer');
+const Serializable = require('../wikidata/model/object-serializer');
 
 module.exports = {
     stadiumSerializerFromWikidata: function(repository, data, functionCallback) {

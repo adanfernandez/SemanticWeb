@@ -4,9 +4,9 @@ const { getChiefs } = require('./sparql');
 const { getStadiums } = require('./sparql');
 
 // Serializers
-const { coachSerializerFromWikidata } = require('../CoachService');
-const { stadiumSerializerFromWikidata } = require('../StadiumService');
-const { chiefSerializerFromWikidata } = require('../ChiefService');
+const { coachSerializerFromWikidata } = require('../serializer/CoachSerializer');
+const { stadiumSerializerFromWikidata } = require('../serializer/StadiumSerializer');
+const { chiefSerializerFromWikidata } = require('../serializer/ChiefSerializer');
 
 
 // Request
