@@ -1,5 +1,6 @@
   module.exports = class Serializable {
-      constructor(name, dateStart, dateEnd) {
+      constructor(wikidata, name, dateStart, dateEnd) {
+          this.wikidata = wikidata;
           this.name = name;
           this.dateStart = dateStart;
           this.dateEnd = dateEnd;

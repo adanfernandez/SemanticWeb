@@ -6,6 +6,7 @@ module.exports = {
     coachSerializerFromWikidata: function(repository, data, functionCallback) {
         data.results.bindings.forEach(element => {
 
+            var wikidata = element.coach.value;
             var name = element.coachLabel.value;
             var dateStart = null;
             var dateEnd = null;
@@ -19,7 +20,7 @@ module.exports = {
                 var dateEnd = element.dateEnd.value;
             }
 
-            var object = new Serializable(name, dateStart, dateEnd);
+            var object = new Serializable(wikidata, name, dateStart, dateEnd);
 
             repository.addCoach(object, functionCallback);
         });

@@ -26,7 +26,7 @@ module.exports = {
      * @param {*} functionCallback 
      */
     addCoach: function(coach, functionCallback) {
-        var query = 'INSERT INTO `tcoach`(`name`, `initial_date`, `final_date`)' + ` VALUES ('${coach.name}','${coach.dateStart}','${coach.dateEnd}')`;
+        var query = 'INSERT INTO `tcoach`(`name`, `initial_date`, `final_date`, `semantic`)' + ` VALUES ('${coach.name}','${coach.dateStart}','${coach.dateEnd}','${coach.wikidata}')`;
         this.connection.query(query, (err, result) => {
             if (err) {
                 functionCallback(null);
@@ -42,7 +42,7 @@ module.exports = {
      * @param {*} functionCallback 
      */
     addStadium: function(stadium, functionCallback) {
-        var query = 'INSERT INTO `tstadium`(`name`, `initial_date`, `final_date`)' + ` VALUES ('${stadium.name}','${stadium.dateStart}','${stadium.dateEnd}')`;
+        var query = 'INSERT INTO `tstadium`(`name`, `initial_date`, `final_date`, `semantic`)' + ` VALUES ('${stadium.name}','${stadium.dateStart}','${stadium.dateEnd}','${stadium.wikidata}')`;
         this.connection.query(query, (err, result) => {
             if (err) {
                 functionCallback(null);
@@ -58,7 +58,7 @@ module.exports = {
      * @param {*} functionCallback 
      */
     addChief: function(chief, functionCallback) {
-        var query = 'INSERT INTO `tchiefs`(`name`, `initial_date`, `final_date`)' + ` VALUES ('${chief.name}','${chief.dateStart}','${chief.dateEnd}')`;
+        var query = 'INSERT INTO `tchiefs`(`name`, `initial_date`, `final_date`, `semantic`)' + ` VALUES ('${chief.name}','${chief.dateStart}','${chief.dateEnd}','${chief.wikidata}')`;
         this.connection.query(query, (err, result) => {
             if (err) {
                 functionCallback(null);
