@@ -1,6 +1,6 @@
 module.exports = class Model {
-    constructor(coach, title, date, rdf) {
-        this.coach = coach;
+    constructor(name, title, date, rdf) {
+        this.name = name;
         this.title = title;
         this.date = date;
         this.rdf = rdf;

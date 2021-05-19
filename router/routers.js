@@ -13,8 +13,8 @@ module.exports = function(app, swig) {
 
     app.get("/coach", function(req, res) {
         getTitlesByCoach(resp => {
-            res.send(resp);
-
+            var page = swig.renderFile('views/coach.html', { coaches: resp });
+            res.send(page);
         });
     });
 
