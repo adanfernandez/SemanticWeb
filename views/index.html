@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css" />
+</head>
+
+<body>
+
+    <ul class="sidenav">
+        <li><a class="active" href="/home">Inicio</a></li>
+        <li><a href="/coach">Entrenadores</a></li>
+        <li><a href="/stadium">Estadios</a></li>
+        <li><a href="/chief">Presidentes ejecutivos</a></li>
+    </ul>
+
+    <section class="main-picture" id="main-picture">
+        <h2 hidden>Main picture of the application</h2>
+    </section>
+
+    <main>
+        <h1>Web semántica - Máster Ingeniería Web (Universidad de Oviedo)</h1>
+        <article>
+            <h2>Descripción del trabajo</h2>
+            <p>Se ha desarrollado una aplicación web para procesar los datos relativos a los títulos del FC Bayern, club alemán de fútbol natural de la ciudad de Múnich, en la región de Baviera.</p>
+            <p>La aplicación extraerá datos de Wikidata, guardándolos en una base de datos en la que habrá más información introducida por el propio estudiante. Por tanto, los datos sacados se podrían dividir en:</p>
+            <section>
+                <h3>Datos de Wikidata</h3>
+                <p>Se habrán obtenido los datos referentes a los entrenadores del FC Bayern, así como todos presidentes y estadios que ha tenido el club a lo largo de su historia. O, al menos, de acuerdo a Wikidata.</p>
+            </section>
+            <section>
+                <h3>Datos físicos</h3>
+                <p>Se habrán introducido todos los títulos del FC Bayern junto a la fecha en la que tuvieron lugar.</p>
+            </section>
+        </article>
+        <article class="margin-top-4">
+            <h2>Tecnologías usadas</h2>
+            <p>El proyecto se habrá desarrollado por medio de la plataforma software NodeJS, la cual hace uso del lenguaje Javascript.</p>
+            <p>La aplicación se basa en el framework express, aunque esta no será la única dependencia usada: swig como motor de plantillas, mysql como base de datos, node-fetch para realizar las peticiones a Wikidata o rdf para la generación de turtle son
+                los paquetes npm usados y necesarios para el correcto funcionamiento del proyecto.</p>
+        </article>
+        <article class="margin-top-4">
+            <h2>Persistencia de los datos</h2>
+            <p>Se habrá usado una base de datos MySQL, guardando los datos referentes a los títulos por parte del propio usuario (tablas thistorictitle y ttitle que se pueden ver en el diagrama expuesto abajo). Mediante Sparql se sacarán los datos de Wikidata,
+                serializándolos y guardándolos en sus correspondientes tablas.</p>
+            <p>Unos datos se relacionarán con el resto mediante las fechas. Por ejemplo, para sacar los entrenadores junto a los títulos, se compararán las fechas en las que ha estado cada entrenador en el FC Bayern con las fechas de los títulos obtenidos.
+                Se hará lo mismo en el caso de los estadios y de los presidentes ejecutivos.</p>
+            <figure>
+                <div class="center-content">
+                    <img src="/img/modelo.PNG" / alt="Modelo de la base de datos">
+                </div>
+                <figcaption class="gray">Modelo de base de datos</figcaption>
+            </figure>
+        </article>
+    </main>
+    <footer class="center-content">
+        <sector>
+            <img height="80" src="https://freevectorlogo.net/wp-content/uploads/2013/12/fc-bayern-munchen-90s-logo-vector-logo-400x400.png" alt="FC Bayern München">
+            <img height="70" src="https://upload.wikimedia.org/wikipedia/commons/6/66/Wikidata-logo-en.svg" alt="Wikidata">
+            <img height="70" src="https://electomania.es/wp-content/uploads/2020/10/uniovi.png" alt="Universidad de Oviedo">
+            <img height="70" src="https://ingenieriainformatica.uniovi.es/image/image_gallery?img_id=5435634&t=1584963551956" alt="Escuela de Ingeniería Informática">
+            <img height="70" src="https://semantizandolaweb.files.wordpress.com/2011/11/721424_1_orig.png" alt="RDF">
+        </sector>
+    </footer>
+
+</body>
+
+</html>

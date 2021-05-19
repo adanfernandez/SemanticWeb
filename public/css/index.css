@@ -1,0 +1,74 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: gray;
+}
+
+.active {
+    background-color: gray;
+}
+
+main {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.margin-top-4 {
+    margin-top: 4%;
+}
+
+figure {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    margin-bottom: 5%;
+}
+
+figure figcaption {
+    text-align: center;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    border-bottom: 10px solid red;
+}
+
+footer {
+    background: #CCCDCD;
+}
+
+#main-picture {
+    width: 100%;
+    /* background-image: url("https://i.pinimg.com/originals/cd/0a/ac/cd0aace8dd8cb59eaaf2e821b57ddb65.jpg");*/
+    background-image: url("https://img.fcbayern.com/image/upload/v1601341358/cms/public/images/fcbayern-com/homepage/saison-18-19/galerien/magische-cl-naechte/04_fcboly_fcb_240410.jpg");
+    height: 50vh;
+    background-position: center;
+}

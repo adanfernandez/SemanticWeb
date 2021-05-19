@@ -1,6 +1,7 @@
 var express = require("express");
-var app = express();
+var swig = require('swig');
 
+var app = express();
 
 const { getCoaches } = require("./business/wikidata/queries");
 const { getStadiums } = require("./business/wikidata/queries");
@@ -11,7 +12,9 @@ const dbConnection = require('./persistence/connection');
 // Define port
 app.set('port', Number(process.env.PORT) || 5000);
 
-require("./router/routers.js")(app);
+require("./router/routers.js")(app, swig);
+app.use(express.static('public'));
+
 
 
 app.listen(app.get('port'), () => {

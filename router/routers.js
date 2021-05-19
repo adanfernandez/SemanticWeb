@@ -3,10 +3,18 @@ const { getTitlesByStadium } = require("../business/rdf/rdf");
 const { getTitlesByChief } = require("../business/rdf/rdf");
 
 
-module.exports = function(app) {
+module.exports = function(app, swig) {
+    app.get("/home", function(req, res) {
+        getTitlesByCoach(resp => {
+            var page = swig.renderFile('views/index.html', {});
+            res.send(page);
+        });
+    });
+
     app.get("/coach", function(req, res) {
         getTitlesByCoach(resp => {
             res.send(resp);
+
         });
     });
 
