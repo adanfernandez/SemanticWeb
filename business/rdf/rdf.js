@@ -115,7 +115,7 @@ module.exports = {
 
     getTitlesByChiefTurtle: function(functionCallback) {
         repository.init(dbConnection());
-        repository.getTitlesByStadium(result => {
+        repository.getTitlesByChief(result => {
             let turtleTotal = "";
             Array.from(result).forEach(resultado => {
                 const chief = resultado['chief'];
