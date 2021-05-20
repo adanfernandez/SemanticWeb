@@ -2,6 +2,12 @@ const { getTitlesByCoach } = require("../business/rdf/rdf");
 const { getTitlesByStadium } = require("../business/rdf/rdf");
 const { getTitlesByChief } = require("../business/rdf/rdf");
 
+const { getTitlesByCoachTurtle } = require("../business/rdf/rdf");
+
+
+var fs = require('fs');
+const { resolve } = require("path");
+
 
 module.exports = function(app, swig) {
     app.get("/home", function(req, res) {
@@ -30,5 +36,16 @@ module.exports = function(app, swig) {
             var page = swig.renderFile('views/chief.html', { chiefs: resp });
             res.send(page);
         });
+    });
+
+    app.get('/download/coach', function(req, res) {
+        getTitlesByCoachTurtle(resp => {
+            fs.writeFile(`${__dirname}/../files/miw.ttl`, resp, function(err) {
+                if (err) throw err;
+                const file = `${__dirname}/../files/miw.ttl`;
+                res.download(file);
+            });
+        });
+
     });
 }

@@ -77,5 +77,21 @@ module.exports = {
             });
             functionCallback(triples);
         });
-    }
+    },
+
+
+    getTitlesByCoachTurtle: function(functionCallback) {
+        repository.init(dbConnection());
+        repository.getTitlesByCoach(result => {
+            let turtleTotal = "";
+            Array.from(result).forEach(resultado => {
+                const coach = resultado['coach'];
+                const title = resultado['title'];
+                const predicate = 'https://www.wikidata.org/wiki/Q18560095';
+                const turtle = `<${coach}> <${predicate}> <${title}> .`;
+                turtleTotal += turtle;
+            });
+            functionCallback(turtleTotal);
+        });
+    },
 }
