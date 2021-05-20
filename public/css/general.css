@@ -80,3 +80,8 @@ th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.grid-70 {
+    display: grid;
+    grid-template-columns: 70%;
+}
