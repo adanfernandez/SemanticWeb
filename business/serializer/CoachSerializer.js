@@ -21,6 +21,8 @@ module.exports = {
 
             if (element.dateEnd) {
                 var dateEnd = element.dateEnd.value;
+            } else {
+                var dateEnd = new Date().toISOString().slice(0, 10);
             }
 
             var object = new Serializable(wikidata, name, dateStart, dateEnd);
