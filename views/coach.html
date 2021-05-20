@@ -34,10 +34,10 @@
                         <th>Turtle</th>
                     </tr>
                     {% for coach in coaches%}
-                    <tr>
-                        <td>{{coach.date.getFullYear()}}</td>
-                        <td>{{coach.name}}</td>
-                        <td>{{coach.title}}</td>
+                    <tr itemscope itemtype="https://schema.org/AchieveAction">
+                        <td itemprop="endTime">{{coach.date.getFullYear()}}</td>
+                        <td itemprop="agent">{{coach.name}}</td>
+                        <td itemprop="object">{{coach.title}}</td>
                         <td>
                             <a href="https://rdfshape.weso.es/dataVisualize?activeTab=%23dataTextArea&data={{coach.rdf}}">{{coach.rdf}}</a>
                         </td>
