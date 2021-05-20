@@ -34,10 +34,10 @@
                         <th>Turtle</th>
                     </tr>
                     {% for stadium in stadiums%}
-                    <tr>
-                        <td>{{stadium.date.getFullYear()}}</td>
-                        <td>{{stadium.name}}</td>
-                        <td>{{stadium.title}}</td>
+                    <tr itemscope itemtype="https://schema.org/AchieveAction">
+                        <td itemprop="endTime">{{stadium.date.getFullYear()}}</td>
+                        <td itemprop="location">{{stadium.name}}</td>
+                        <td itemprop="object">{{stadium.title}}</td>
                         <td>
                             <a href="https://rdfshape.weso.es/dataVisualize?activeTab=%23dataTextArea&data={{stadium.rdf}}">{{stadium.rdf}}</a>
                         </td>
