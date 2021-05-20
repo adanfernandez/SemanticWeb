@@ -94,4 +94,37 @@ module.exports = {
             functionCallback(turtleTotal);
         });
     },
+
+    getTitlesByStadiumTurtle: function(functionCallback) {
+        repository.init(dbConnection());
+        repository.getTitlesByStadium(result => {
+            let turtleTotal = "";
+            Array.from(result).forEach(resultado => {
+                const stadium = resultado['stadium'];
+
+                const title = resultado['title'];
+
+                const predicate = 'https://www.wikidata.org/wiki/Q18560095';
+                const turtle = `<${stadium}> <${predicate}> <${title}> .`;
+
+                turtleTotal += turtle;
+            });
+            functionCallback(turtleTotal);
+        });
+    },
+
+    getTitlesByChiefTurtle: function(functionCallback) {
+        repository.init(dbConnection());
+        repository.getTitlesByStadium(result => {
+            let turtleTotal = "";
+            Array.from(result).forEach(resultado => {
+                const chief = resultado['chief'];
+                const title = resultado['title'];
+                const predicate = 'https://www.wikidata.org/wiki/Q18560095';
+                const turtle = `<${chief}> <${predicate}> <${title}> .`;
+                turtleTotal += turtle;
+            });
+            functionCallback(turtleTotal);
+        });
+    },
 }
