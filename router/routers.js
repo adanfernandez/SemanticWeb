@@ -20,7 +20,8 @@ module.exports = function(app, swig) {
 
     app.get("/stadium", function(req, res) {
         getTitlesByStadium(resp => {
-            res.send(resp);
+            var page = swig.renderFile('views/stadium.html', { stadiums: resp });
+            res.send(page);
         });
     });
 
