@@ -59,6 +59,9 @@ figure figcaption {
 
 footer {
     background: #CCCDCD;
+    margin-top: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 table {
