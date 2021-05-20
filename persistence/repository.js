@@ -73,7 +73,7 @@ module.exports = {
      * @param {*} functionCallback 
      */
     getTitlesByCoach: function(functionCallback) {
-        var query = 'Select tcoach.semantic as coach, tcoach.name as coachname, ttitle.semantic as title, ttitle.name as titlename, thistorictitle.date from tcoach,ttitle,thistorictitle where thistorictitle.id_title = ttitle.id and thistorictitle.date <= tcoach.final_date and thistorictitle.date >= tcoach.initial_date ORDER BY thistorictitle.date';
+        var query = 'Select tcoach.semantic as coach, tcoach.name as coachname, ttitle.semantic as title, ttitle.name as titlename, thistorictitle.date from tcoach,ttitle,thistorictitle where thistorictitle.id_title = ttitle.id and thistorictitle.date <= tcoach.final_date and thistorictitle.date >= tcoach.initial_date ORDER BY tcoach.name';
         this.connection.query(query, (err, result) => {
             if (err) {
                 functionCallback(null);

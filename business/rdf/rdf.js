@@ -84,12 +84,25 @@ module.exports = {
         repository.init(dbConnection());
         repository.getTitlesByCoach(result => {
             let turtleTotal = "";
+            let name = "";
+            let turtle = "";
             Array.from(result).forEach(resultado => {
                 const coach = resultado['coach'];
                 const title = resultado['title'];
+                let coachname = resultado['coachname'];
                 const predicate = 'https://www.wikidata.org/wiki/Q18560095';
-                const turtle = `<${coach}> <${predicate}> <${title}> .`;
+
+                if (name === coachname) {
+                    turtle = ` , <${title}>`;
+                } else {
+                    if (name === "") {
+                        turtle = ` <${coach}> <${predicate}> <${title}>`;
+                    } else {
+                        turtle = ` . <${coach}> <${predicate}> <${title}>`;
+                    }
+                }
                 turtleTotal += turtle;
+                name = coachname;
             });
             functionCallback(turtleTotal);
         });
