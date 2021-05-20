@@ -98,6 +98,16 @@ module.exports = {
         });
     },
 
+    getTitlesByStadiumOrderByStadiumName: function(functionCallback) {
+        var query = 'Select tstadium.semantic as stadium, tstadium.name as stadiumname, ttitle.semantic as title, ttitle.name as titlename, thistorictitle.date from tstadium, ttitle, thistorictitle where thistorictitle.id_title = ttitle.id and thistorictitle.date <= tstadium.final_date and thistorictitle.date >= tstadium.initial_date ORDER BY tstadium.name';
+        this.connection.query(query, (err, result) => {
+            if (err) {
+                functionCallback(null);
+            } else {
+                functionCallback(result);
+            }
+        });
+    },
 
     getTitlesByStadium: function(functionCallback) {
         var query = 'Select tstadium.semantic as stadium, tstadium.name as stadiumname, ttitle.semantic as title, ttitle.name as titlename, thistorictitle.date from tstadium, ttitle, thistorictitle where thistorictitle.id_title = ttitle.id and thistorictitle.date <= tstadium.final_date and thistorictitle.date >= tstadium.initial_date ORDER BY thistorictitle.date';

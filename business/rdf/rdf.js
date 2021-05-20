@@ -45,7 +45,7 @@ module.exports = {
                 const date = resultado['date'];
 
                 const predicate = 'https://www.wikidata.org/wiki/Q18560095';
-                const turtle = `<${stadium}> <${predicate}> <${title}> .`;
+                const turtle = `<${stadium}> <${predicate}> "${title}" .`;
 
                 const model = new Model(stadiumname, titlename, date, rdf.TurtleParser.parse(turtle).graph.toArray().join("\n"));
 
@@ -103,7 +103,6 @@ module.exports = {
                 turtleTotal += turtle;
                 name = coachname;
             });
-            console.log(turtleTotal);
             functionCallback(turtleTotal);
         });
     },
@@ -111,17 +110,26 @@ module.exports = {
 
     getTitlesByStadiumTurtle: function(functionCallback) {
         repository.init(dbConnection());
-        repository.getTitlesByStadium(result => {
-            let turtleTotal = "";
+        repository.getTitlesByStadiumOrderByStadiumName(result => {
+            let turtleTotal = "@prefix entity: <http://www.wikidata.org/entity/> . @prefix property: <https://www.wikidata.org/wiki/s> .";
+            let name = "";
+            let turtle = "";
             Array.from(result).forEach(resultado => {
-                const stadium = resultado['stadium'];
-
-                const title = resultado['title'];
-
-                const predicate = 'https://www.wikidata.org/wiki/Q18560095';
-                const turtle = `<${stadium}> <${predicate}> <${title}> .`;
-
+                const coach = resultado['stadium'].replace("http://www.wikidata.org/entity/", "entity:");
+                const title = resultado['title'].replace("http://www.wikidata.org/entity/", "entity:");;
+                let stadiumname = resultado['stadiumname'];
+                const predicate = 'property:Q18560095';
+                if (name === stadiumname) {
+                    turtle = ` , "${title}"`;
+                } else {
+                    if (name === "") {
+                        turtle = ` ${coach} ${predicate} "${title}"`;
+                    } else {
+                        turtle = ` . ${coach} ${predicate} "${title}"`;
+                    }
+                }
                 turtleTotal += turtle;
+                name = stadiumname;
             });
             functionCallback(turtleTotal);
         });
