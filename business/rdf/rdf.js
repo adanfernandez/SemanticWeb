@@ -69,7 +69,7 @@ module.exports = {
                 const date = resultado['date'];
 
                 const predicate = 'https://www.wikidata.org/wiki/Q18560095';
-                const turtle = `<${chief}> <${predicate}> <${title}> .`;
+                const turtle = `<${chief}> <${predicate}> "${title}" .`;
 
                 const model = new Model(chiefname, titlename, date, rdf.TurtleParser.parse(turtle).graph.toArray().join("\n"));
 
@@ -137,14 +137,26 @@ module.exports = {
 
     getTitlesByChiefTurtle: function(functionCallback) {
         repository.init(dbConnection());
-        repository.getTitlesByChief(result => {
-            let turtleTotal = "";
+        repository.getTitlesByChiefOrderByChiefName(result => {
+            let turtleTotal = "@prefix entity: <http://www.wikidata.org/entity/> . @prefix property: <https://www.wikidata.org/wiki/s> .";
+            let name = "";
+            let turtle = "";
             Array.from(result).forEach(resultado => {
-                const chief = resultado['chief'];
-                const title = resultado['title'];
-                const predicate = 'https://www.wikidata.org/wiki/Q18560095';
-                const turtle = `<${chief}> <${predicate}> <${title}> .`;
+                const chief = resultado['chief'].replace("http://www.wikidata.org/entity/", "entity:");
+                const title = resultado['title'].replace("http://www.wikidata.org/entity/", "entity:");;
+                let chiefname = resultado['chiefname'];
+                const predicate = 'property:Q18560095';
+                if (name === chiefname) {
+                    turtle = ` , "${title}"`;
+                } else {
+                    if (name === "") {
+                        turtle = ` ${chief} ${predicate} "${title}"`;
+                    } else {
+                        turtle = ` . ${chief} ${predicate} "${title}"`;
+                    }
+                }
                 turtleTotal += turtle;
+                name = chiefname;
             });
             functionCallback(turtleTotal);
         });
