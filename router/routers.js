@@ -27,7 +27,8 @@ module.exports = function(app, swig) {
 
     app.get("/chief", function(req, res) {
         getTitlesByChief(resp => {
-            res.send(resp);
+            var page = swig.renderFile('views/chief.html', { chiefs: resp });
+            res.send(page);
         });
     });
 }

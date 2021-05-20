@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/chief.css" />
+    <link rel="stylesheet" href="/css/general.css" />
+</head>
+
+<body>
+
+    <ul class="sidenav">
+        <li><a href="/home">Inicio</a></li>
+        <li><a href="/coach">Entrenadores</a></li>
+        <li><a href="/stadium">Estadios</a></li>
+        <li><a class="active" href="/chief">Presidentes</a></li>
+    </ul>
+
+    <section class="main-picture" id="main-picture">
+        <h2 hidden>Main picture of the application</h2>
+    </section>
+
+    <main>
+        <h1>Presidentes del FC Bayern y sus éxitos</h1>
+        <article>
+            <h2>Representración del cruce de datos</h2>
+            <aside class="center-content">
+                <table>
+                    <tr>
+                        <th>Año</th>
+                        <th>Ejecutivo</th>
+                        <th>Título</th>
+                        <th>Turtle</th>
+                    </tr>
+                    {% for chief in chiefs%}
+                    <tr>
+                        <td>{{chief.date.getFullYear()}}</td>
+                        <td>{{chief.name}}</td>
+                        <td>{{chief.title}}</td>
+                        <td>
+                            <a href="https://rdfshape.weso.es/dataVisualize?activeTab=%23dataTextArea&data={{chief.rdf}}">{{chief.rdf}}</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </aside>
+        </article>
+        <article class="margin-top-4">
+            <h2>Conclusiones sacadas</h2>
+            <p>Wikidata otorgará resultados incompletos, faltando más de 30 períodos presidenciales.</p>
+        </article>
+    </main>
+    <footer class="center-content">
+        <sector>
+            <img height="80" src="https://freevectorlogo.net/wp-content/uploads/2013/12/fc-bayern-munchen-90s-logo-vector-logo-400x400.png" alt="FC Bayern München">
+            <img height="70" src="https://upload.wikimedia.org/wikipedia/commons/6/66/Wikidata-logo-en.svg" alt="Wikidata">
+            <img height="70" src="https://electomania.es/wp-content/uploads/2020/10/uniovi.png" alt="Universidad de Oviedo">
+            <img height="70" src="https://ingenieriainformatica.uniovi.es/image/image_gallery?img_id=5435634&t=1584963551956" alt="Escuela de Ingeniería Informática">
+            <img height="70" src="https://semantizandolaweb.files.wordpress.com/2011/11/721424_1_orig.png" alt="RDF">
+        </sector>
+    </footer>
+
+</body>
+
+</html>
