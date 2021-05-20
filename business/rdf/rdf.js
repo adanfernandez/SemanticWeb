@@ -21,7 +21,7 @@ module.exports = {
                 const date = resultado['date'];
 
                 const predicate = 'https://www.wikidata.org/wiki/Q18560095';
-                const turtle = `<${coach}> <${predicate}> <${title}> .`;
+                const turtle = `<${coach}> <${predicate}> "${title}" .`;
 
                 const model = new Model(coachname, titlename, date, rdf.TurtleParser.parse(turtle).graph.toArray().join("\n"));
 
@@ -82,31 +82,32 @@ module.exports = {
 
     getTitlesByCoachTurtle: function(functionCallback) {
         repository.init(dbConnection());
-        repository.getTitlesByCoach(result => {
-            let turtleTotal = "";
+        repository.getTitlesByCoachOrderByCoachName(result => {
+            let turtleTotal = "@prefix entity: <http://www.wikidata.org/entity/> . @prefix property: <https://www.wikidata.org/wiki/s> .";
             let name = "";
             let turtle = "";
             Array.from(result).forEach(resultado => {
-                const coach = resultado['coach'];
-                const title = resultado['title'];
+                const coach = resultado['coach'].replace("http://www.wikidata.org/entity/", "entity:");
+                const title = resultado['title'].replace("http://www.wikidata.org/entity/", "entity:");;
                 let coachname = resultado['coachname'];
-                const predicate = 'https://www.wikidata.org/wiki/Q18560095';
-
+                const predicate = 'property:Q18560095';
                 if (name === coachname) {
-                    turtle = ` , <${title}>`;
+                    turtle = ` , "${title}"`;
                 } else {
                     if (name === "") {
-                        turtle = ` <${coach}> <${predicate}> <${title}>`;
+                        turtle = ` ${coach} ${predicate} "${title}"`;
                     } else {
-                        turtle = ` . <${coach}> <${predicate}> <${title}>`;
+                        turtle = ` . ${coach} ${predicate} "${title}"`;
                     }
                 }
                 turtleTotal += turtle;
                 name = coachname;
             });
+            console.log(turtleTotal);
             functionCallback(turtleTotal);
         });
     },
+
 
     getTitlesByStadiumTurtle: function(functionCallback) {
         repository.init(dbConnection());

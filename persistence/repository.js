@@ -69,10 +69,10 @@ module.exports = {
     },
 
     /**
-     * Get coaches obtained from wikidata with their titles 
+     * Get coaches obtained from wikidata with their titles order by name
      * @param {*} functionCallback 
      */
-    getTitlesByCoach: function(functionCallback) {
+    getTitlesByCoachOrderByCoachName: function(functionCallback) {
         var query = 'Select tcoach.semantic as coach, tcoach.name as coachname, ttitle.semantic as title, ttitle.name as titlename, thistorictitle.date from tcoach,ttitle,thistorictitle where thistorictitle.id_title = ttitle.id and thistorictitle.date <= tcoach.final_date and thistorictitle.date >= tcoach.initial_date ORDER BY tcoach.name';
         this.connection.query(query, (err, result) => {
             if (err) {
@@ -82,6 +82,22 @@ module.exports = {
             }
         });
     },
+
+    /**
+     * Get coaches obtained from wikidata with their titles 
+     * @param {*} functionCallback 
+     */
+    getTitlesByCoach: function(functionCallback) {
+        var query = 'Select tcoach.semantic as coach, tcoach.name as coachname, ttitle.semantic as title, ttitle.name as titlename, thistorictitle.date from tcoach,ttitle,thistorictitle where thistorictitle.id_title = ttitle.id and thistorictitle.date <= tcoach.final_date and thistorictitle.date >= tcoach.initial_date ORDER BY thistorictitle.date';
+        this.connection.query(query, (err, result) => {
+            if (err) {
+                functionCallback(null);
+            } else {
+                functionCallback(result);
+            }
+        });
+    },
+
 
     getTitlesByStadium: function(functionCallback) {
         var query = 'Select tstadium.semantic as stadium, tstadium.name as stadiumname, ttitle.semantic as title, ttitle.name as titlename, thistorictitle.date from tstadium, ttitle, thistorictitle where thistorictitle.id_title = ttitle.id and thistorictitle.date <= tstadium.final_date and thistorictitle.date >= tstadium.initial_date ORDER BY thistorictitle.date';
