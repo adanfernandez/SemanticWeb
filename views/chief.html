@@ -34,10 +34,10 @@
                         <th>Turtle</th>
                     </tr>
                     {% for chief in chiefs%}
-                    <tr>
-                        <td>{{chief.date.getFullYear()}}</td>
-                        <td>{{chief.name}}</td>
-                        <td>{{chief.title}}</td>
+                    <tr itemscope itemtype="https://schema.org/AchieveAction">
+                        <td itemprop="endTime">{{chief.date.getFullYear()}}</td>
+                        <td itemprop="agent">{{chief.name}}</td>
+                        <td itemprop="object">{{chief.title}}</td>
                         <td>
                             <a href="https://rdfshape.weso.es/dataVisualize?activeTab=%23dataTextArea&data={{chief.rdf}}">{{chief.rdf}}</a>
                         </td>
