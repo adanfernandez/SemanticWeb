@@ -83,7 +83,7 @@ module.exports = {
     getTitlesByCoachTurtle: function(functionCallback) {
         repository.init(dbConnection());
         repository.getTitlesByCoachOrderByCoachName(result => {
-            let turtleTotal = "@prefix entity: <http://www.wikidata.org/entity/> . @prefix property: <https://www.wikidata.org/wiki/s> .";
+            let turtleTotal = "@prefix entity: <http://www.wikidata.org/entity/> . @prefix property: <https://www.wikidata.org/wiki/> .";
             let name = "";
             let turtle = "";
             Array.from(result).forEach(resultado => {
